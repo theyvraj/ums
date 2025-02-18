@@ -198,4 +198,4 @@ def logout():
     return redirect(url_for('login'))
 
 if __name__ == '__main__':
-    app.run(host='192.168.211.5', debug=False, port=8080)
+    app.run(debug=False, port=8080)
