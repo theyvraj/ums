@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon_anim.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container" align="center">
+        <h2>Signup</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" name="phone_number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="profile_picture">Profile Picture:</label>
+                <input type="file" name="profile_picture" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label for="date_of_birth">Date Of Birth:</label>
+                <input type="date" name="date_of_birth" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="user_type">Sign up as:</label>
+                <select name="user_type" required>
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="admin-secret" style="display: none;">
+                <label for="secret_key">Admin Secret Key:</label>
+                <input type="text" name="secret_key">
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Signup</button>
+            </div>
+        </form>
+
+        <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <script>
+        // Show or hide the admin secret key field based on user type selection
+        document.querySelector('select[name="user_type"]').addEventListener('change', function() {
+            var adminSecret = document.getElementById('admin-secret');
+            if (this.value === 'admin') {
+                adminSecret.style.display = 'block';
+            } else {
+                adminSecret.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

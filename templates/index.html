@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon_anim.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container" align="center">
+        <h3>Hi! Please choose an option:</h3>
+
+        <form method="POST">
+            <div class="form-group">
+                <button type="submit" name="action" value="Signup">Sign Up</button>
+            </div>
+            <div class="form-group">
+                <button type="submit" name="action" value="Login">Log In</button>
+            </div>
+        </form>
+        <h4>(mode : development)</h4>
+
+    </div>
+</body>
+</html>
